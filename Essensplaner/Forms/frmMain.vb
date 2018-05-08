@@ -125,6 +125,7 @@ Public Class frmMain
         Using frmEigen As New frmEigen
             If frmEigen.ShowDialog(Me) = DialogResult.OK Then
                 Me.Essensplaner.Bestellung.AddBestellungRow(frmEigen.NameSpeise, frmEigen.Ort, frmEigen.Preis, frmEigen.Beachten, frmEigen.Anzahl)
+                BerechnePreis()
             End If
         End Using
     End Sub
