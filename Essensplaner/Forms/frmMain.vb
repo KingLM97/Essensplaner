@@ -65,8 +65,17 @@ Public Class frmMain
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'Alle verschiedenen Orte in eine Liste packen
-        Dim Orte As New List(Of String)
+
+        Dim ZeitJetzt = Date.Now.TimeOfDay
+        If ZeitJetzt >= New TimeSpan(11, 45, 0) Then
+            If MessageBox.Show($"Tut mir Leid {Environment.UserName}, aber die Zeit ist abgelaufen. {Environment.NewLine}Möchtest du dennoch was bestellen?", "Die Zeit ist abgelaufen..", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                MessageBox.Show($"Ha, nur verarscht. :){Environment.NewLine}Bestellung wird also getrost ignoriert :P")
+            End If
+            Return
+        End If
+
+            'Alle verschiedenen Orte in eine Liste packen
+            Dim Orte As New List(Of String)
         For Each row As Essensplaner.BestellungRow In Me.Essensplaner.Bestellung
             If Orte.Contains(row.Ort) = False Then
                 Orte.Add(row.Ort)
