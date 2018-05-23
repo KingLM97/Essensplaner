@@ -23,10 +23,10 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.RestaurantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Essensplaner = New Essensplaner()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
@@ -451,6 +451,7 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(888, 561)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Essensplaner"

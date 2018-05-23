@@ -22,7 +22,7 @@ Partial Class frmMain
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.Essensplaner1 = New EssensplanerEditor.Essensplaner()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -32,40 +32,40 @@ Partial Class frmMain
         Me.StraßeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PlzDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OrtDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RestaurantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RestaurantBindingSource = New System.Windows.Forms.BindingSource()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.FKRestaurantKategorieBindingSource = New System.Windows.Forms.BindingSource()
+        Me.RestaurantBindingSource1 = New System.Windows.Forms.BindingSource()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.NameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BeschreibungDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FKRestaurantKategorieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RestaurantBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.FKKategorieSpeiseBindingSource = New System.Windows.Forms.BindingSource()
+        Me.FKRestaurantKategorieBindingSource1 = New System.Windows.Forms.BindingSource()
+        Me.RestaurantBindingSource2 = New System.Windows.Forms.BindingSource()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.NameDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BeschreibungDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PreisDataGridViewTextBoxColumn = New EssensplanerEditor.NumericUpDownColumn()
-        Me.FKKategorieSpeiseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FKRestaurantKategorieBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RestaurantBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ListBox3 = New System.Windows.Forms.ListBox()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         CType(Me.Essensplaner1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.RestaurantDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RestaurantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FKRestaurantKategorieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RestaurantBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FKRestaurantKategorieBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RestaurantBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Essensplaner1
@@ -157,6 +157,27 @@ Partial Class frmMain
         Me.TabPage2.Text = "Kategorie"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'TextBox2
+        '
+        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKRestaurantKategorieBindingSource, "Beschreibung", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.TextBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBox2.Location = New System.Drawing.Point(123, 271)
+        Me.TextBox2.Multiline = True
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox2.Size = New System.Drawing.Size(433, 67)
+        Me.TextBox2.TabIndex = 2
+        '
+        'FKRestaurantKategorieBindingSource
+        '
+        Me.FKRestaurantKategorieBindingSource.DataMember = "FK_Restaurant_Kategorie"
+        Me.FKRestaurantKategorieBindingSource.DataSource = Me.RestaurantBindingSource1
+        '
+        'RestaurantBindingSource1
+        '
+        Me.RestaurantBindingSource1.DataMember = "Restaurant"
+        Me.RestaurantBindingSource1.DataSource = Me.Essensplaner1
+        '
         'DataGridView1
         '
         Me.DataGridView1.AutoGenerateColumns = False
@@ -180,16 +201,6 @@ Partial Class frmMain
         Me.BeschreibungDataGridViewTextBoxColumn1.DataPropertyName = "Beschreibung"
         Me.BeschreibungDataGridViewTextBoxColumn1.HeaderText = "Beschreibung"
         Me.BeschreibungDataGridViewTextBoxColumn1.Name = "BeschreibungDataGridViewTextBoxColumn1"
-        '
-        'FKRestaurantKategorieBindingSource
-        '
-        Me.FKRestaurantKategorieBindingSource.DataMember = "FK_Restaurant_Kategorie"
-        Me.FKRestaurantKategorieBindingSource.DataSource = Me.RestaurantBindingSource1
-        '
-        'RestaurantBindingSource1
-        '
-        Me.RestaurantBindingSource1.DataMember = "Restaurant"
-        Me.RestaurantBindingSource1.DataSource = Me.Essensplaner1
         '
         'ListBox1
         '
@@ -216,6 +227,32 @@ Partial Class frmMain
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Speise"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKKategorieSpeiseBindingSource, "Beschreibung", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBox1.Location = New System.Drawing.Point(243, 280)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox1.Size = New System.Drawing.Size(313, 58)
+        Me.TextBox1.TabIndex = 3
+        '
+        'FKKategorieSpeiseBindingSource
+        '
+        Me.FKKategorieSpeiseBindingSource.DataMember = "FK_Kategorie_Speise"
+        Me.FKKategorieSpeiseBindingSource.DataSource = Me.FKRestaurantKategorieBindingSource1
+        '
+        'FKRestaurantKategorieBindingSource1
+        '
+        Me.FKRestaurantKategorieBindingSource1.DataMember = "FK_Restaurant_Kategorie"
+        Me.FKRestaurantKategorieBindingSource1.DataSource = Me.RestaurantBindingSource2
+        '
+        'RestaurantBindingSource2
+        '
+        Me.RestaurantBindingSource2.DataMember = "Restaurant"
+        Me.RestaurantBindingSource2.DataSource = Me.Essensplaner1
         '
         'DataGridView2
         '
@@ -251,21 +288,6 @@ Partial Class frmMain
         Me.PreisDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.PreisDataGridViewTextBoxColumn.Width = 55
         '
-        'FKKategorieSpeiseBindingSource
-        '
-        Me.FKKategorieSpeiseBindingSource.DataMember = "FK_Kategorie_Speise"
-        Me.FKKategorieSpeiseBindingSource.DataSource = Me.FKRestaurantKategorieBindingSource1
-        '
-        'FKRestaurantKategorieBindingSource1
-        '
-        Me.FKRestaurantKategorieBindingSource1.DataMember = "FK_Restaurant_Kategorie"
-        Me.FKRestaurantKategorieBindingSource1.DataSource = Me.RestaurantBindingSource2
-        '
-        'RestaurantBindingSource2
-        '
-        Me.RestaurantBindingSource2.DataMember = "Restaurant"
-        Me.RestaurantBindingSource2.DataSource = Me.Essensplaner1
-        '
         'ListBox3
         '
         Me.ListBox3.DataSource = Me.FKRestaurantKategorieBindingSource1
@@ -290,34 +312,13 @@ Partial Class frmMain
         Me.ListBox2.TabIndex = 0
         Me.ListBox2.ValueMember = "ID"
         '
-        'TextBox1
-        '
-        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKKategorieSpeiseBindingSource, "Beschreibung", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox1.Location = New System.Drawing.Point(243, 280)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(313, 58)
-        Me.TextBox1.TabIndex = 3
-        '
-        'TextBox2
-        '
-        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKRestaurantKategorieBindingSource, "Beschreibung", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TextBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox2.Location = New System.Drawing.Point(123, 271)
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(433, 67)
-        Me.TextBox2.TabIndex = 2
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(567, 367)
         Me.Controls.Add(Me.TabControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Essensplaner Editor"
@@ -328,15 +329,15 @@ Partial Class frmMain
         CType(Me.RestaurantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FKRestaurantKategorieBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RestaurantBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FKRestaurantKategorieBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RestaurantBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -109,7 +109,7 @@ Public Class frmMain
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim sb As New StringBuilder
-        For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"))
+        For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
             Dim fi As New FileInfo(s)
             If fi.Extension = ".txt" Then
                 If fi.LastAccessTime.Date = Date.Today Then
