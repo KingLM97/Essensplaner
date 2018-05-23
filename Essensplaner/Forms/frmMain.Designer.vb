@@ -20,13 +20,14 @@ Partial Class frmMain
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()>
+    '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.RestaurantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Essensplaner = New Essensplaner
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
@@ -36,22 +37,12 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BeschreibungDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmBestellen = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.clmWunsch = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.clmBestellen = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.FKKategorieSpeiseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnzahlDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmAdd = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.clmRemove = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.GPreisDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmLöschen = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.BestellungBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -60,6 +51,14 @@ Partial Class frmMain
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.BestellungBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAdd = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.clmRemove = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.clmLöschen = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.RestaurantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Essensplaner, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,8 +70,8 @@ Partial Class frmMain
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -184,7 +183,7 @@ Partial Class frmMain
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.BeschreibungDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn2, Me.clmBestellen, Me.clmWunsch})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.BeschreibungDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn2, Me.clmWunsch, Me.clmBestellen})
         Me.DataGridView1.DataSource = Me.FKKategorieSpeiseBindingSource
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
@@ -217,14 +216,6 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
-        'clmBestellen
-        '
-        Me.clmBestellen.HeaderText = "Bestellen"
-        Me.clmBestellen.Name = "clmBestellen"
-        Me.clmBestellen.ReadOnly = True
-        Me.clmBestellen.Text = "Bestellen"
-        Me.clmBestellen.UseColumnTextForButtonValue = True
-        '
         'clmWunsch
         '
         Me.clmWunsch.HeaderText = "Wunsch"
@@ -235,6 +226,14 @@ Partial Class frmMain
         Me.clmWunsch.Text = "Wunsch"
         Me.clmWunsch.UseColumnTextForButtonValue = True
         '
+        'clmBestellen
+        '
+        Me.clmBestellen.HeaderText = "Bestellen"
+        Me.clmBestellen.Name = "clmBestellen"
+        Me.clmBestellen.ReadOnly = True
+        Me.clmBestellen.Text = "Bestellen"
+        Me.clmBestellen.UseColumnTextForButtonValue = True
+        '
         'FKKategorieSpeiseBindingSource
         '
         Me.FKKategorieSpeiseBindingSource.DataMember = "FK_Kategorie_Speise"
@@ -242,7 +241,6 @@ Partial Class frmMain
         '
         'TextBox1
         '
-        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKKategorieSpeiseBindingSource, "Beschreibung", True))
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TextBox1.Location = New System.Drawing.Point(3, 290)
         Me.TextBox1.Multiline = True
@@ -274,7 +272,7 @@ Partial Class frmMain
         Me.DataGridView2.AllowUserToDeleteRows = False
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.AnzahlDataGridViewTextBoxColumn, Me.clmAdd, Me.clmRemove, Me.GPreisDataGridViewTextBoxColumn, Me.clmLöschen})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.clmAdd, Me.clmRemove, Me.clmLöschen})
         Me.DataGridView2.DataSource = Me.BestellungBindingSource
         Me.DataGridView2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView2.Location = New System.Drawing.Point(3, 40)
@@ -285,86 +283,6 @@ Partial Class frmMain
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(705, 143)
         Me.DataGridView2.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Ort"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Ort"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Preis"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Preis"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 55
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Beachten"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Beachten"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'AnzahlDataGridViewTextBoxColumn
-        '
-        Me.AnzahlDataGridViewTextBoxColumn.DataPropertyName = "Anzahl"
-        Me.AnzahlDataGridViewTextBoxColumn.HeaderText = "Anzahl"
-        Me.AnzahlDataGridViewTextBoxColumn.Name = "AnzahlDataGridViewTextBoxColumn"
-        Me.AnzahlDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnzahlDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'clmAdd
-        '
-        Me.clmAdd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.clmAdd.HeaderText = "+"
-        Me.clmAdd.Name = "clmAdd"
-        Me.clmAdd.ReadOnly = True
-        Me.clmAdd.Text = "+"
-        Me.clmAdd.UseColumnTextForButtonValue = True
-        Me.clmAdd.Width = 19
-        '
-        'clmRemove
-        '
-        Me.clmRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.clmRemove.HeaderText = "-"
-        Me.clmRemove.Name = "clmRemove"
-        Me.clmRemove.ReadOnly = True
-        Me.clmRemove.Text = "-"
-        Me.clmRemove.UseColumnTextForButtonValue = True
-        Me.clmRemove.Width = 16
-        '
-        'GPreisDataGridViewTextBoxColumn
-        '
-        Me.GPreisDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.GPreisDataGridViewTextBoxColumn.DataPropertyName = "GPreis"
-        Me.GPreisDataGridViewTextBoxColumn.HeaderText = "GPreis"
-        Me.GPreisDataGridViewTextBoxColumn.Name = "GPreisDataGridViewTextBoxColumn"
-        Me.GPreisDataGridViewTextBoxColumn.ReadOnly = True
-        Me.GPreisDataGridViewTextBoxColumn.Width = 63
-        '
-        'clmLöschen
-        '
-        Me.clmLöschen.HeaderText = "Löschen"
-        Me.clmLöschen.Name = "clmLöschen"
-        Me.clmLöschen.ReadOnly = True
-        Me.clmLöschen.Text = "Löschen"
-        Me.clmLöschen.UseColumnTextForButtonValue = True
-        '
-        'BestellungBindingSource
-        '
-        Me.BestellungBindingSource.DataMember = "Bestellung"
-        Me.BestellungBindingSource.DataSource = Me.Essensplaner
         '
         'Panel1
         '
@@ -445,6 +363,67 @@ Partial Class frmMain
         Me.Button1.Text = "BEARBEITEN"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'BestellungBindingSource
+        '
+        Me.BestellungBindingSource.DataMember = "Bestellung"
+        Me.BestellungBindingSource.DataSource = Me.Essensplaner
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Preis"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Preis"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Anzahl"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Anzahl"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "GPreis"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "GPreis"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        '
+        'clmAdd
+        '
+        Me.clmAdd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.clmAdd.HeaderText = "+"
+        Me.clmAdd.Name = "clmAdd"
+        Me.clmAdd.ReadOnly = True
+        Me.clmAdd.Text = "+"
+        Me.clmAdd.UseColumnTextForButtonValue = True
+        Me.clmAdd.Width = 19
+        '
+        'clmRemove
+        '
+        Me.clmRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.clmRemove.HeaderText = "-"
+        Me.clmRemove.Name = "clmRemove"
+        Me.clmRemove.ReadOnly = True
+        Me.clmRemove.Text = "-"
+        Me.clmRemove.UseColumnTextForButtonValue = True
+        Me.clmRemove.Width = 16
+        '
+        'clmLöschen
+        '
+        Me.clmLöschen.HeaderText = "Löschen"
+        Me.clmLöschen.Name = "clmLöschen"
+        Me.clmLöschen.ReadOnly = True
+        Me.clmLöschen.Text = "Löschen"
+        Me.clmLöschen.UseColumnTextForButtonValue = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -467,9 +446,9 @@ Partial Class frmMain
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -488,31 +467,35 @@ Partial Class frmMain
     Friend WithEvents OrtDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PreisDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents BeachtenDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Essensplaner As Essensplaner
-    Friend WithEvents RestaurantBindingSource As BindingSource
-    Friend WithEvents FKRestaurantKategorieBindingSource As BindingSource
-    Friend WithEvents FKKategorieSpeiseBindingSource As BindingSource
-    Friend WithEvents BestellungBindingSource As BindingSource
     Friend WithEvents lblPreis As Label
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents BeschreibungDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents clmBestellen As DataGridViewButtonColumn
-    Friend WithEvents clmWunsch As DataGridViewButtonColumn
     Friend WithEvents Timer1 As Timer
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents AnzahlDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents clmAdd As DataGridViewButtonColumn
-    Friend WithEvents clmRemove As DataGridViewButtonColumn
     Friend WithEvents GPreisDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents clmLöschen As DataGridViewButtonColumn
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents Essensplaner As Essensplaner
+    Friend WithEvents RestaurantBindingSource As BindingSource
+    Friend WithEvents FKRestaurantKategorieBindingSource As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents BeschreibungDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents clmWunsch As DataGridViewButtonColumn
+    Friend WithEvents clmBestellen As DataGridViewButtonColumn
+    Friend WithEvents FKKategorieSpeiseBindingSource As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents clmAdd As DataGridViewButtonColumn
+    Friend WithEvents clmRemove As DataGridViewButtonColumn
+    Friend WithEvents clmLöschen As DataGridViewButtonColumn
+    Friend WithEvents BestellungBindingSource As BindingSource
 End Class

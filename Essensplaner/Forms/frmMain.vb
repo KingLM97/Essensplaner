@@ -59,9 +59,11 @@ Public Class frmMain
     End Sub
 
     Private Sub DataGridView2_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellValueChanged
-        Me.Validate()
-        Me.Essensplaner.Bestellung.AcceptChanges()
-        BerechnePreis()
+        If Me.Essensplaner IsNot Nothing Then
+            Me.Validate()
+            Me.Essensplaner.Bestellung.AcceptChanges()
+            BerechnePreis()
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -74,8 +76,8 @@ Public Class frmMain
             Return
         End If
 
-            'Alle verschiedenen Orte in eine Liste packen
-            Dim Orte As New List(Of String)
+        'Alle verschiedenen Orte in eine Liste packen
+        Dim Orte As New List(Of String)
         For Each row As Essensplaner.BestellungRow In Me.Essensplaner.Bestellung
             If Orte.Contains(row.Ort) = False Then
                 Orte.Add(row.Ort)
@@ -138,4 +140,5 @@ Public Class frmMain
             End If
         End Using
     End Sub
+
 End Class

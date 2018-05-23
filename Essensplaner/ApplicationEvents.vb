@@ -15,7 +15,7 @@ Namespace My
             Dim PfadOrdner = System.IO.Path.GetDirectoryName(PfadExe)
             Dim LogFile = Path.Combine(PfadOrdner, "Log.txt")
             Using sw As New StreamWriter(LogFile, True)
-                sw.Write($"{Date.Now}: {Environment.UserName} {Environment.NewLine} {e.Exception.Message} {Environment.NewLine}")
+                sw.Write($"{Date.Now}: {Environment.UserName} {Environment.NewLine} {e.Exception.Message} {Environment.NewLine} {Environment.NewLine} {e.Exception.InnerException}")
                 sw.Close()
             End Using
             e.ExitApplication = False
