@@ -13,12 +13,12 @@ Public Class frmMain
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         Dim grid = DirectCast(sender, DataGridView)
 
-        If TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 3 Then
+        If TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 4 Then
             Dim currentRowSpeise = DirectCast(DirectCast(FKKategorieSpeiseBindingSource.Current, DataRowView).Row, Essensplaner.SpeiseRow)
             Dim currentRowRestaurant = DirectCast(DirectCast(RestaurantBindingSource.Current, DataRowView).Row, Essensplaner.RestaurantRow)
 
             Me.Essensplaner.Bestellung.AddBestellungRow(currentRowSpeise.Name, currentRowRestaurant.Name, currentRowSpeise.Preis, "", 1)
-        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 4 Then
+        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 3 Then
             'Wunsch hinzufügen
             Dim currentRowSpeise = DirectCast(DirectCast(FKKategorieSpeiseBindingSource.Current, DataRowView).Row, Essensplaner.SpeiseRow)
             Dim currentRowRestaurant = DirectCast(DirectCast(RestaurantBindingSource.Current, DataRowView).Row, Essensplaner.RestaurantRow)
@@ -38,13 +38,13 @@ Public Class frmMain
 
     Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
         Dim grid = DirectCast(sender, DataGridView)
-        If TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 8 Then
+        If TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 6 Then
             Dim row = DirectCast(DirectCast(BestellungBindingSource.Current, DataRowView).Row, Essensplaner.BestellungRow)
             row.Delete()
-        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 5 Then
+        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 4 Then
             Dim row = DirectCast(DirectCast(BestellungBindingSource.Current, DataRowView).Row, Essensplaner.BestellungRow)
             row.Anzahl += 1
-        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 6 Then
+        ElseIf TypeOf grid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso e.ColumnIndex = 5 Then
             Dim row = DirectCast(DirectCast(BestellungBindingSource.Current, DataRowView).Row, Essensplaner.BestellungRow)
             If Not row.Anzahl - 1 <= 0 Then
                 row.Anzahl -= 1
