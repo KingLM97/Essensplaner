@@ -114,7 +114,7 @@ Public Class frmMain
         For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
             Dim fi As New FileInfo(s)
             If fi.Extension = ".txt" Then
-                If fi.LastAccessTime.Date = Date.Today Then
+                If fi.LastWriteTime.Date = Date.Today Then
                     Using sr As New StreamReader(fi.FullName)
                         sb.Append(sr.ReadToEnd)
                         sb.AppendLine()
