@@ -43,6 +43,14 @@ Partial Class frmMain
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAdd = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.clmRemove = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.clmLöschen = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.BestellungBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -51,14 +59,6 @@ Partial Class frmMain
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.BestellungBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmAdd = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.clmRemove = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.clmLöschen = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.RestaurantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Essensplaner, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,8 +70,8 @@ Partial Class frmMain
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -284,90 +284,6 @@ Partial Class frmMain
         Me.DataGridView2.Size = New System.Drawing.Size(705, 143)
         Me.DataGridView2.TabIndex = 0
         '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.Button5)
-        Me.Panel1.Controls.Add(Me.Button4)
-        Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.lblPreis)
-        Me.Panel1.Controls.Add(Me.Button2)
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(3, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(705, 31)
-        Me.Panel1.TabIndex = 1
-        '
-        'Button5
-        '
-        Me.Button5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button5.ForeColor = System.Drawing.Color.Black
-        Me.Button5.Location = New System.Drawing.Point(333, 0)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(62, 31)
-        Me.Button5.TabIndex = 8
-        Me.Button5.Text = "EIGEN"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button4.ForeColor = System.Drawing.Color.Yellow
-        Me.Button4.Location = New System.Drawing.Point(243, 0)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(90, 31)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "SPEISEPLÄNE"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button3.ForeColor = System.Drawing.Color.Blue
-        Me.Button3.Location = New System.Drawing.Point(165, 0)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(78, 31)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "DRUCKEN"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'lblPreis
-        '
-        Me.lblPreis.AutoSize = True
-        Me.lblPreis.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPreis.Location = New System.Drawing.Point(523, 1)
-        Me.lblPreis.Name = "lblPreis"
-        Me.lblPreis.Size = New System.Drawing.Size(98, 24)
-        Me.lblPreis.TabIndex = 5
-        Me.lblPreis.Text = "Kosten: 0€"
-        '
-        'Button2
-        '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button2.ForeColor = System.Drawing.Color.Green
-        Me.Button2.Location = New System.Drawing.Point(87, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(78, 31)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "BESTELLEN"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button1.ForeColor = System.Drawing.Color.Red
-        Me.Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(87, 31)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "BEARBEITEN"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'BestellungBindingSource
-        '
-        Me.BestellungBindingSource.DataMember = "Bestellung"
-        Me.BestellungBindingSource.DataSource = Me.Essensplaner
-        '
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "Name"
@@ -424,6 +340,90 @@ Partial Class frmMain
         Me.clmLöschen.Text = "Löschen"
         Me.clmLöschen.UseColumnTextForButtonValue = True
         '
+        'BestellungBindingSource
+        '
+        Me.BestellungBindingSource.DataMember = "Bestellung"
+        Me.BestellungBindingSource.DataSource = Me.Essensplaner
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Button5)
+        Me.Panel1.Controls.Add(Me.Button4)
+        Me.Panel1.Controls.Add(Me.Button3)
+        Me.Panel1.Controls.Add(Me.lblPreis)
+        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(3, 3)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(705, 31)
+        Me.Panel1.TabIndex = 1
+        '
+        'Button5
+        '
+        Me.Button5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button5.ForeColor = System.Drawing.Color.Black
+        Me.Button5.Location = New System.Drawing.Point(384, 0)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(62, 31)
+        Me.Button5.TabIndex = 8
+        Me.Button5.Text = "EIGEN"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button4.ForeColor = System.Drawing.Color.Yellow
+        Me.Button4.Location = New System.Drawing.Point(294, 0)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(90, 31)
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "SPEISEPLÄNE"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button3.ForeColor = System.Drawing.Color.Blue
+        Me.Button3.Location = New System.Drawing.Point(165, 0)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(129, 31)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "DRUCKEN + GUCKEN"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'lblPreis
+        '
+        Me.lblPreis.AutoSize = True
+        Me.lblPreis.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPreis.Location = New System.Drawing.Point(523, 1)
+        Me.lblPreis.Name = "lblPreis"
+        Me.lblPreis.Size = New System.Drawing.Size(98, 24)
+        Me.lblPreis.TabIndex = 5
+        Me.lblPreis.Text = "Kosten: 0€"
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button2.ForeColor = System.Drawing.Color.Green
+        Me.Button2.Location = New System.Drawing.Point(87, 0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(78, 31)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "BESTELLEN"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button1.ForeColor = System.Drawing.Color.Red
+        Me.Button1.Location = New System.Drawing.Point(0, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(87, 31)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "BEARBEITEN"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -446,9 +446,9 @@ Partial Class frmMain
         CType(Me.FKKategorieSpeiseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.BestellungBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

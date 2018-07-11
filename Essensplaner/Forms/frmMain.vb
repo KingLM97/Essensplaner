@@ -68,6 +68,7 @@ Public Class frmMain
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
+#If DEBUG = False Then
         Dim ZeitJetzt = Date.Now.TimeOfDay
         If ZeitJetzt >= New TimeSpan(11, 45, 0) Then
             If MessageBox.Show($"Tut mir Leid {Environment.UserName}, aber die Zeit ist abgelaufen. {Environment.NewLine}Möchtest du dennoch was bestellen?", "Die Zeit ist abgelaufen..", MessageBoxButtons.YesNo) = DialogResult.Yes Then
@@ -75,6 +76,7 @@ Public Class frmMain
             End If
             Return
         End If
+#End If
 
         'Alle verschiedenen Orte in eine Liste packen
         Dim Orte As New List(Of String)
@@ -114,7 +116,7 @@ Public Class frmMain
         For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
             Dim fi As New FileInfo(s)
             If fi.Extension = ".txt" Then
-                If fi.LastWriteTime.Date = Date.Today Then
+                If fi.LastWriteTime < New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day, 11, 45, 0) Then
                     Using sr As New StreamReader(fi.FullName)
                         sb.Append(sr.ReadToEnd)
                         sb.AppendLine()
