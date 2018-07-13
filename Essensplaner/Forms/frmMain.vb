@@ -116,12 +116,14 @@ Public Class frmMain
         For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
             Dim fi As New FileInfo(s)
             If fi.Extension = ".txt" Then
-                If fi.LastWriteTime < New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day, 11, 45, 0) Then
-                    Using sr As New StreamReader(fi.FullName)
-                        sb.Append(sr.ReadToEnd)
-                        sb.AppendLine()
-                        sr.Close()
-                    End Using
+                If fi.CreationTime.Date < Date.Now.Date Then
+                    If fi.LastWriteTime < New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day, 11, 45, 0) Then
+                        Using sr As New StreamReader(fi.FullName)
+                            sb.Append(sr.ReadToEnd)
+                            sb.AppendLine()
+                            sr.Close()
+                        End Using
+                    End If
                 End If
             End If
         Next

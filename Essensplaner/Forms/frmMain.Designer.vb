@@ -27,7 +27,7 @@ Partial Class frmMain
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.RestaurantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Essensplaner = New Essensplaner
+        Me.Essensplaner = New Essensplaner()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
@@ -396,7 +396,7 @@ Partial Class frmMain
         '
         Me.lblPreis.AutoSize = True
         Me.lblPreis.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPreis.Location = New System.Drawing.Point(523, 1)
+        Me.lblPreis.Location = New System.Drawing.Point(604, 1)
         Me.lblPreis.Name = "lblPreis"
         Me.lblPreis.Size = New System.Drawing.Size(98, 24)
         Me.lblPreis.TabIndex = 5
