@@ -108,22 +108,27 @@ Public Class frmMain
             sw.Close()
         End Using
 
-        Me.Essensplaner.Bestellung.WriteXml(Path.Combine(Application.StartupPath, "Bestellungen", $"{Environment.UserName}RAW.xml"))
+        Using sww As New StringWriter()
+            Me.Essensplaner.Bestellung.WriteXml(sww)
+            Dim a = Verschlüsselung.Verschlüsseln(sww.ToString)
+            Using swww As New StreamWriter(Path.Combine(Application.StartupPath, "Bestellungen", $"{Environment.UserName}RAW.xml"))
+                swww.Write(a)
+            End Using
+        End Using
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim sb As New StringBuilder
-        For Each s As String In Directory.GetFiles(Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
+        For Each s As String In Directory.GetFiles("Z:\4all\LukasM\Essensplaner\Bestellungen", "*.txt") 'Path.Combine(Application.StartupPath, "Bestellungen"), "*.txt")
             Dim fi As New FileInfo(s)
             If fi.Extension = ".txt" Then
-                If fi.CreationTime.Date < Date.Now.Date Then
-                    If fi.LastWriteTime < New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day, 11, 45, 0) Then
-                        Using sr As New StreamReader(fi.FullName)
-                            sb.Append(sr.ReadToEnd)
-                            sb.AppendLine()
-                            sr.Close()
-                        End Using
-                    End If
+                Dim now = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day, 11, 45, 0)
+                If fi.LastWriteTime.Date = now.Date AndAlso fi.LastWriteTime < now Then
+                    Using sr As New StreamReader(fi.FullName)
+                        sb.Append(sr.ReadToEnd)
+                        sb.AppendLine()
+                        sr.Close()
+                    End Using
                 End If
             End If
         Next

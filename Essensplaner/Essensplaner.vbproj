@@ -125,6 +125,7 @@
     <Compile Include="RichTextBoxPrintCtrl.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Verschlüsselung.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmEigen.resx">
